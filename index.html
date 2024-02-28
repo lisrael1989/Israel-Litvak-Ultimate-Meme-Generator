@@ -10,7 +10,8 @@
     <link rel="stylesheet" href="css/main.css" />
     <title>Ultimate Meme Generator</title>
   </head>
-  <body onload="oninit()">
+  <body onload="onInit()">
+    <!-- Nav -->
     <header class="main-header full main-layout">
       <div class="flex align-center space-between">
         <div class="logo">Meme Gen<span>😂</span></div>
@@ -28,21 +29,36 @@
       </div>
     </header>
 
-    <main class="main-gallery">
-      <section class="grid-container">
-        <img src="meme-imgs/1.jpg" alt="" />
-        <img src="meme-imgs/2.jpg" alt="" />
-        <img src="meme-imgs/3.jpg" alt="" />
-        <img src="meme-imgs/4.jpg" alt="" />
-        <img src="meme-imgs/5.jpg" alt="" />
-        <img src="meme-imgs/6.jpg" alt="" />
-        <img src="meme-imgs/7.jpg" alt="" />
-        <img src="meme-imgs/8.jpg" alt="" />
-        <img src="meme-imgs/9.jpg" alt="" />
-        <img src="meme-imgs/10.jpg" alt="" />
-      </section>
-    </main>
+    <!-- gallery -->
+    <section class="main-gallery">
+      <section class="imgs-container"></section>
+    </section>
+
+    <!-- canvas -->
+    <section class="editor grid hidden">
+      <div class="editor-layout grid">
+        <div class="canvas-container">
+          <canvas width="200" height="200"></canvas>
+        </div>
+        <section
+          class="controls flex space-around direction-column align-center"
+        >
+          <input
+            type="text"
+            class="text-input"
+            placeholder="Enter text"
+            name="text-input"
+            oninput="onTextChange(event.target)"
+          />
+        </section>
+      </div>
+    </section>
+
+    <script src="js/service/meme.service.js"></script>
+    <script src="js/service/gallery.service.js"></script>
+    <script src="js/service/storage.js"></script>
     <script src="js/service/utils.js"></script>
-    <script src="js/main-controller.js"></script>
+    <script src="js/meme-controller.js"></script>
+    <script src="js/gallery-controller.js"></script>
   </body>
 </html>

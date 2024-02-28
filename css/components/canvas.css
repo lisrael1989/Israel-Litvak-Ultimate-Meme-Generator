@@ -1,0 +1,13 @@
+.canvas-container {
+  width: 100%;
+  max-width: 60vh;
+  place-self: center;
+}
+
+canvas {
+  place-self: center;
+  border-radius: 20px;
+  width: 100%;
+  height: auto;
+  box-shadow: rgba(186, 185, 185, 0.669) 0px 5px 15px;
+}

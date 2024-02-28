@@ -1,4 +1,5 @@
 /* flex helpers */
+
 .flex {
   display: flex;
 }
@@ -11,9 +12,33 @@
   align-items: center;
 }
 
+.space-around {
+  justify-content: space-around;
+}
+
+.column {
+  flex-direction: column;
+}
+
+.align-item {
+  align-self: center;
+}
+
+.flex-wrap {
+  flex-wrap: wrap;
+}
+
 /* list helpers */
 .clean-list {
   margin: 0;
   padding: 0;
   list-style-type: none;
+}
+
+.grid {
+  display: grid;
+}
+
+.hidden {
+  display: block;
 }

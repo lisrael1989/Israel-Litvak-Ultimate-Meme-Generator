@@ -1,0 +1,18 @@
+.controls {
+  place-self: center;
+
+  background-color: var(--bgPrimary);
+  border-radius: 30px;
+  width: 80%;
+  height: 90%;
+  padding: 10px;
+  background-color: rgba(181, 181, 181, 0.532);
+}
+
+.controls .text-input {
+  box-shadow: var(--boxShadowPrimary);
+  border-radius: 12px;
+  padding: 10px;
+  font-family: inherit;
+  text-align: center;
+}

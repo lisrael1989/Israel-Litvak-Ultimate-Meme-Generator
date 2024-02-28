@@ -9,3 +9,5 @@
 
 /* COMPONENTS */
 @import url(components/main-header.css);
+@import url(components/canvas.css);
+@import url(components/controls.css);
