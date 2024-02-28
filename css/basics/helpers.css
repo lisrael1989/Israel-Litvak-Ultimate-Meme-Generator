@@ -39,6 +39,10 @@
   display: grid;
 }
 
-.hidden {
+.block {
   display: block;
+}
+
+.hide {
+  display: none;
 }

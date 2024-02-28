@@ -1,38 +1,95 @@
 "use strict";
-let gCanvas;
-let gCtx;
-let gMeme;
 
-const TOUCH_EVENTS = ["touchstart", "touchmove", "touchend"];
+var gImgs = [
+  { id: 1, url: "meme-imgs/1.jpg", keywords: ["famous", "tramp"] },
+  { id: 2, url: "meme-imgs/2.jpg", keywords: ["pets", "dog"] },
+  { id: 3, url: "meme-imgs/3.jpg", keywords: ["funny", "cat"] },
+  { id: 4, url: "meme-imgs/4.jpg", keywords: ["pets", "cat"] },
+  { id: 5, url: "meme-imgs/5.jpg", keywords: ["funny", "baby"] },
+  { id: 6, url: "meme-imgs/6.jpg", keywords: ["funny", "cat"] },
+  { id: 7, url: "meme-imgs/7.jpg", keywords: ["funny", "children"] },
+  { id: 8, url: "meme-imgs/8.jpg", keywords: ["funny", "movie"] },
+  { id: 9, url: "meme-imgs/9.jpg", keywords: ["famous", "children"] },
+  { id: 10, url: "meme-imgs/10.jpg", keywords: ["funny", "cat"] },
+  { id: 11, url: "meme-imgs/11.jpg", keywords: ["funny", "movie"] },
+  { id: 12, url: "meme-imgs/12.jpg", keywords: ["funny", "cat"] },
+  { id: 13, url: "meme-imgs/13.jpg", keywords: ["famous", "funny"] },
+  { id: 14, url: "meme-imgs/14.jpg", keywords: ["movie", "scary"] },
+  { id: 15, url: "meme-imgs/15.jpg", keywords: ["famous", "cat"] },
+  { id: 16, url: "meme-imgs/16.jpg", keywords: ["movie", "cat"] },
+  { id: 17, url: "meme-imgs/17.jpg", keywords: ["famous", "putin"] },
+  { id: 18, url: "meme-imgs/18.jpg", keywords: ["movie", "funny"] },
+];
 
-function createMeme() {
-  return {
-    width: null,
-    height: null,
-    size: 30,
-    align: "center",
-    color: "#ffffff",
+let gMeme = {
+  selectedImgId: null,
+  selectedLineIdx: 0,
+  lines: [
+    {
+      txt: "This course so easy ",
+      size: 30,
+      color: "white",
+      align: "center",
+      font: "Impact",
+      underline: false,
+    },
+  ],
+};
 
-    txts: [
-      {
-        line: "",
-        order: 0,
-        posX: 80,
-        posY: 60,
-      },
-    ],
-  };
+function getImg() {
+  return gImgs;
 }
 
-function renderCanvas() {
-  var img = getCurrImg();
-  var imgCanvas = new Image();
-  imgCanvas.src = img.url;
-  imgCanvas.onload = function () {
-    drawCanvas(this);
-    gMeme.txts.forEach(function (txt, idx) {
-      renderTxt(txt, idx);
-    });
-  };
-  return { width: imgCanvas.width, height: imgCanvas.height };
+function getImgByIdx(idx = null) {
+  if (idx !== null) {
+    return gImgs[idx].url;
+  }
+}
+
+function setLineTxt(elTxt) {
+  gMeme.lines[gMeme.selectedLineIdx].txt = elTxt;
+}
+
+function setImg(id) {
+  gMeme.selectedImgId = id;
+}
+
+function changeFontSize(value) {
+  gMeme.lines[gMeme.selectedLineIdx].size += value;
+}
+
+function changeColor(value) {
+  gMeme.lines[gMeme.selectedLineIdx].color = value;
+  renderMeme(gMeme);
+}
+
+function switchLine() {
+  gMeme.selectedLineIdx += 1;
+  if (gMeme.selectedLineIdx > gMeme.lines.length - 1) gMeme.selectedLineIdx = 0;
+}
+
+function switchWithClick(idx) {
+  gMeme.selectedLineIdx = idx;
+  renderMeme(gMeme);
+}
+
+function addLine() {
+  gMeme.lines.push({
+    txt: "text",
+    size: 30,
+    color: "red",
+    posX: null,
+    posY: null,
+    textWidth: null,
+    textHight: null,
+  });
+  gMeme.selectedLineIdx = gMeme.lines.length - 1;
+}
+
+function setLineCoords(indx, x, y, textWidth, textHight) {
+  const currLine = gMeme.lines[indx];
+  currLine.posX = x;
+  currLine.posY = y;
+  currLine.textWidth = textWidth;
+  currLine.textHight = textHight;
 }

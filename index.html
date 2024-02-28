@@ -18,11 +18,12 @@
 
         <nav class="main-nav">
           <ul class="main-nav-list flex clean-list align-center">
-            <li class="flex align-center justify-center">
-              <a href="#">Gallery</a>
+            <li class="editor-btn flex align-center justify-center">
+              <a href="#" onclick="switchSection()">Gallery</a>
             </li>
+
             <li class="flex align-center justify-center">
-              <a href="#">About</a>
+              <a href="#about">About</a>
             </li>
           </ul>
         </nav>
@@ -35,29 +36,30 @@
     </section>
 
     <!-- canvas -->
-    <section class="editor grid hidden">
-      <div class="editor-layout grid">
-        <div class="canvas-container">
-          <canvas width="200" height="200"></canvas>
-        </div>
-        <section
-          class="controls flex space-around direction-column align-center"
-        >
-          <input
-            type="text"
-            class="text-input"
-            placeholder="Enter text"
-            name="text-input"
-            oninput="onTextChange(event.target)"
-          />
-        </section>
+    <section class="editor editor-layout grid hide">
+      <div class="canvas-container">
+        <canvas width="400" height="400"></canvas>
       </div>
+      <section class="controls">
+        <input
+          type="text"
+          id="text-input"
+          placeholder="Enter text"
+          name="text-input"
+          oninput="onTxtInput(value)"
+        />
+        <div>
+          <input type="color" oninput="onChangeColor(value)" />
+        </div>
+        <div>
+          <button onclick="onChangeFontSize(+5)">+</button>
+          <button onclick="onChangeFontSize(-5)">-</button>
+        </div>
+      </section>
     </section>
 
-    <script src="js/service/meme.service.js"></script>
-    <script src="js/service/gallery.service.js"></script>
     <script src="js/service/storage.js"></script>
-    <script src="js/service/utils.js"></script>
+    <script src="js/service/meme.service.js"></script>
     <script src="js/meme-controller.js"></script>
     <script src="js/gallery-controller.js"></script>
   </body>

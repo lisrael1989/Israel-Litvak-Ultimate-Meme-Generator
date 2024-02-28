@@ -1,23 +1,22 @@
 "use strict";
 
-function onInit() {
-  renderGallery(gImgs);
-}
+renderGallery();
 
 function renderGallery() {
-  const imgs = getImgs();
-  var strHTMLs = "";
+  const elGallery = document.querySelector(".imgs-container");
+  const imgs = getImg();
 
-  imgs.forEach((img) => {
-    strHTMLs += `
-<img src="${img.url}" onclick="onImgSelect(this,${img.url})">
-`;
-  });
-  document.querySelector(".imgs-container").innerHTML = strHTMLs;
-  setImgs(imgs);
+  const strHTML = imgs
+    .map((img) => {
+      return `<img src="meme-imgs/${img.id}.jpg" id="${img.id}" onclick="onSelectImg(id)" />`;
+    })
+    .join("");
+
+  elGallery.innerHTML = strHTML;
 }
 
-function onImgSelect(elImg, imgUrl) {
-  setImg(elImg, imgUrl);
-  renderMeme();
+function onSelectImg(id) {
+  setImg(id);
+  renderMeme(gMeme);
+  switchSection();
 }

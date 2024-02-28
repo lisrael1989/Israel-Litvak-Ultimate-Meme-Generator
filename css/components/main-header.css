@@ -18,7 +18,8 @@
   cursor: pointer;
 }
 
-.main-header .main-nav-list a {
+.main-header .main-nav-list a,
+.Gallery-editor {
   text-decoration: none;
   color: var(--font-header);
   /* cursor: pointer; */
