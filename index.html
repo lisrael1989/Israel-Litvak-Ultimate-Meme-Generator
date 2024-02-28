@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="css/main.css" />
     <title>Ultimate Meme Generator</title>
   </head>
-  <body>
+  <body onload="oninit()">
     <header class="main-header full main-layout">
       <div class="flex align-center space-between">
         <div class="logo">Meme Gen<span>😂</span></div>
@@ -20,9 +20,6 @@
             <li class="flex align-center justify-center">
               <a href="#">Gallery</a>
             </li>
-            <!-- <li class="flex align-center justify-center">
-              <a href="#">Mems</a>
-            </li> -->
             <li class="flex align-center justify-center">
               <a href="#">About</a>
             </li>
@@ -30,11 +27,6 @@
         </nav>
       </div>
     </header>
-    <section class="actions">
-      <button></button>
-      <button></button>
-      <button></button>
-    </section>
 
     <main class="main-gallery">
       <section class="grid-container">
@@ -50,7 +42,7 @@
         <img src="meme-imgs/10.jpg" alt="" />
       </section>
     </main>
-
-    <script></script>
+    <script src="js/service/utils.js"></script>
+    <script src="js/main-controller.js"></script>
   </body>
 </html>

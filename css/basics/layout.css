@@ -20,6 +20,7 @@
 /*img grid*/
 
 .grid-container {
+  background-color: grey;
   display: grid;
   padding: 20px;
   gap: 10px;

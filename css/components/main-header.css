@@ -5,11 +5,12 @@
 
 .logo {
   color: var(--font-header);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: eurofurence-bold;
   font-size: 2.5em;
 }
 
 .main-nav-list li {
+  font-family: lato;
   width: 133px;
   margin-top: 10px;
   border-inline-end: 1px solid black;
