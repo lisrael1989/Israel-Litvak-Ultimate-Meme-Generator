@@ -35,11 +35,12 @@ function drawLine(line, indx) {
   const margin = indx * 50;
   const textMargin = 10;
 
-  const { txt, size, color } = line;
+  const { txt, size, color, align } = line;
   gCtx.fillStyle = `${color}`;
   gCtx.font = `${size}px Arial`;
 
-  gCtx.textAlign = "center";
+  gCtx.textAlign = align; // Update the text alignment
+
   gCtx.textBaseline = "middle";
 
   // Calculate the width of the text
@@ -60,7 +61,7 @@ function drawLine(line, indx) {
 
     // Draw the rectangle
     gCtx.strokeRect(rectX, textY, textWidth, textHeight);
-
+    gCtx.strokeStyle = "transparent";
     setLineCoords(indx, rectX, textY, textWidth, textHeight);
   }
 }
@@ -170,4 +171,9 @@ function getRandomText() {
   const texts = ["i love memes", "hello", "love code"];
   const randomIndex = getRandomInt(0, texts.length);
   return texts[randomIndex];
+}
+
+function onAlignText(alignment) {
+  setAlignment(alignment);
+  renderMeme(gMeme);
 }

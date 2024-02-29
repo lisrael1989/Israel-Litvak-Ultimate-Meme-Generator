@@ -11,7 +11,7 @@
 .logo {
   color: var(--font-header);
   font-family: eurofurence-bold;
-  font-size: 2.5em;
+  font-size: 4em;
 }
 
 .main-nav-list li {
@@ -21,6 +21,7 @@
   transition: 0.4s;
   cursor: pointer;
   justify-content: center;
+  font-size: 1.5em;
 }
 
 .main-header .main-nav-list a,
