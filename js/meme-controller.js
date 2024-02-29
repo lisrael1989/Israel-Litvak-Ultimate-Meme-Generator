@@ -145,3 +145,12 @@ function switchSection() {
   elGallery.classList.toggle("hide");
   elEditor.classList.toggle("hide");
 }
+
+function onRemoveLine() {
+  const lastLineIdx = gMeme.lines.length - 1;
+  const lastLine = gMeme.lines[lastLineIdx];
+  const { posX, posY, textWidth, textHeight } = lastLine;
+  gCtx.clearRect(posX, posY, textWidth, textHeight);
+  gMeme.lines.splice(lastLineIdx, 1);
+  renderMeme(gMeme);
+}

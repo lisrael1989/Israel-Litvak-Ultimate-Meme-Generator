@@ -44,20 +44,32 @@
         <input
           type="text"
           id="text-input"
+          class="text-input"
           placeholder="Enter text"
           name="text-input"
           oninput="onTxtInput(value)"
         />
-        <div>
-          <button onclick="onAddLine()">Add Text</button>
-          <button onclick="onSwitchLine()">Switch Line</button>
+        <div class="text-btn">
+          <button class="add-text-btn" onclick="onAddLine()">+</button>
+          <button class="switch-btn" onclick="onSwitchLine()">
+            <i class="switch-lines fa-solid fa-arrow-down-up-across-line"></i>
+          </button>
+          <button class="remove-btn" onclick="onRemoveLine()">
+            <i class="remove-line fa-solid fa-trash"></i>
+          </button>
         </div>
-        <div>
-          <input type="color" oninput="onChangeColor(value)" />
-        </div>
-        <div>
-          <button onclick="onChangeFontSize(+5)">+</button>
-          <button onclick="onChangeFontSize(-5)">-</button>
+        <div class="action-btn">
+          <button class="increase-font-size" onclick="onChangeFontSize(+5)">
+            A+
+          </button>
+          <button class="decrease-font-size" onclick="onChangeFontSize(-5)">
+            A-
+          </button>
+          <div>
+            <button class="fa-solid fa-palette">
+              <input type="color" oninput="onChangeColor(value)" />
+            </button>
+          </div>
         </div>
 
         <a href="#" class="download-meme" onclick="downloadCanvas(this)"
