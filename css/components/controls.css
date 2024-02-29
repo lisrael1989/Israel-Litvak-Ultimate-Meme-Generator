@@ -6,7 +6,7 @@
   width: 80%;
   height: 90%;
   padding: 10px;
-  background-color: rgba(181, 181, 181, 0.532);
+  background-color: rgba(83, 81, 81, 0.532);
 }
 
 .controls .text-input {
@@ -17,19 +17,6 @@
   padding: 10px;
   font-family: inherit;
   text-align: center;
-}
-
-.download-meme {
-  text-decoration: none;
-  padding: 5px 10px;
-  background: #5a7cf7;
-  border: 1px solid #4267b2;
-  border-radius: 3px;
-  /* margin: 3px; */
-
-  font-size: 20px;
-  color: #fff;
-  cursor: pointer;
 }
 
 .switch-btn {
@@ -59,7 +46,7 @@
 
 .text-btn,
 .action-btn {
-  margin: 10px;
+  margin: 20px;
 }
 
 .remove-btn {
@@ -74,9 +61,17 @@
 }
 
 .action-btn {
-  background-color: aqua;
+  background: rgb(133, 228, 142);
+  background: radial-gradient(
+    circle,
+    rgba(133, 228, 142, 1) 2%,
+    rgba(13, 91, 213, 0.9864320728291317) 97%
+  );
   border-radius: 10px;
   height: 100px;
+}
+button {
+  margin-right: 10px;
 }
 
 .increase-font-size,
@@ -88,4 +83,37 @@
   border-radius: 10px;
   border: 2px solid rgb(219, 218, 218);
   box-shadow: 2px 2px 2px #8a8a8a;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.download-meme {
+  text-decoration: none;
+  font-family: lato;
+
+  padding: 5px 10px;
+  background: RGBA(143, 68, 187, 1);
+  box-shadow: 2px 2px 2px RGBA(143, 68, 187, 1);
+  border: none;
+  border-radius: 10px;
+
+  font-size: 20px;
+  color: #fff;
+  cursor: pointer;
+  margin-right: 10px;
+}
+
+.save-meme {
+  text-decoration: none;
+  font-family: lato;
+
+  padding: 5px 10px;
+  background: RGBA(30, 124, 211, 1);
+  box-shadow: 2px 2px 2px RRGBA(30, 124, 211, 1);
+  border: none;
+  border-radius: 10px;
+
+  font-size: 20px;
+  color: #fff;
+  cursor: pointer;
 }

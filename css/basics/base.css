@@ -2,10 +2,12 @@
   box-sizing: border-box;
 }
 
+html {
+  background-color: rgb(74, 69, 69);
+}
 body {
   margin: 0;
   font-size: 1rem;
-  background-color: rgb(65, 64, 64);
 }
 
 button {

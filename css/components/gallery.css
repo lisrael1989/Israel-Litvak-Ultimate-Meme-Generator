@@ -1,5 +1,12 @@
+.main-gallery {
+  background-color: rgb(54, 50, 50);
+  border-radius: 30px;
+  margin: 10px 10px;
+}
 .gallery-header {
-  margin-top: 20px;
+  padding: 10px;
+
+  border-radius: 30px;
 }
 
 .search-field {
@@ -29,4 +36,24 @@ img {
   border: 2px solid none;
   border-radius: 50px;
   box-shadow: 10px 5px 5px rgb(47, 47, 47);
+}
+
+/* scrollbar*/
+
+/* width */
+::-webkit-scrollbar {
+  margin-inline-end: 12px;
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  border-radius: 10px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: var(--gradientPrimary);
+  background: var(--gradientPrimary);
+  border-radius: 12px;
 }

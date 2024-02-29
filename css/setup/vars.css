@@ -7,4 +7,10 @@
   --primary-1: #818181;
   --bgPrimary: #62656a;
   --bgPrimary-2: #202123;
+  --gradientPrimary: linear-gradient(
+    90deg,
+    rgb(15, 179, 51) 0%,
+    rgb(29, 57, 150) 54%,
+    rgb(95, 251, 152) 100%
+  );
 }

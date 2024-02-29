@@ -139,11 +139,13 @@ function onClick(ev) {
 function switchSection() {
   const elGallery = document.querySelector(".imgs-container");
   const elEditor = document.querySelector(".editor");
+  const elGalleryHeder = document.querySelector(".gallery-header");
 
   // console.log(elNavBtnTxt.innerText);
 
   elGallery.classList.toggle("hide");
   elEditor.classList.toggle("hide");
+  elGalleryHeder.classList.toggle("hide");
 }
 
 function onRemoveLine() {

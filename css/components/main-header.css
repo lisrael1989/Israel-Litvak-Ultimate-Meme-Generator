@@ -1,6 +1,11 @@
 .main-header {
   height: 80px;
-  background-color: var(--main-header);
+  background: rgb(133, 228, 142);
+  background: radial-gradient(
+    circle,
+    rgba(133, 228, 142, 1) 2%,
+    rgba(13, 91, 213, 0.9864320728291317) 97%
+  );
 }
 
 .logo {
@@ -12,10 +17,10 @@
 .main-nav-list li {
   font-family: lato;
   width: 133px;
-  margin-top: 10px;
-  border-inline-end: 1px solid black;
+  /* margin-top: 10px; */
   transition: 0.4s;
   cursor: pointer;
+  justify-content: center;
 }
 
 .main-header .main-nav-list a,
