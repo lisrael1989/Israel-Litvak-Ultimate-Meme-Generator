@@ -27,8 +27,8 @@ var gMeme = {
   selectedLineIdx: 0,
   lines: [
     {
-      txt: "Your Text ",
-      size: 20,
+      txt: "First line ",
+      size: 30,
       color: "black",
       align: "center",
       font: "Impact",
@@ -113,15 +113,9 @@ function setAlignment(alignment) {
 
 function updatePosX() {
   gMeme.lines.forEach(function (line, idx) {
-    if (line.align === "left") line.posX = 10;
-    if (line.align === "right") line.posX = gElCanvas.width - 80;
+    if (line.align === "left") line.posX = gElCanvas.width - 100;
+    if (line.align === "right") line.posX = 10;
     if (line.align === "center") line.posX = gElCanvas.width / 2 - 40;
   });
   renderMeme(gMeme);
-}
-
-function changeFont() {
-  var elFont = document.querySelector(".select-font").value;
-  gMeme.font = elFont;
-  renderMeme();
 }

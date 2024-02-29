@@ -177,3 +177,10 @@ function onAlignText(alignment) {
   setAlignment(alignment);
   renderMeme(gMeme);
 }
+
+function changeFont() {
+  var elFont = document.querySelector(".select-font").value;
+  var line = gMeme.lines[gMeme.selectedLineIdx];
+  line.font = elFont;
+  renderMeme(gMeme);
+}
