@@ -154,3 +154,18 @@ function onRemoveLine() {
   gMeme.lines.splice(lastLineIdx, 1);
   renderMeme(gMeme);
 }
+
+function OnFlexible() {
+  const randomImgId = getRandomInt(1, gImgs.length + 1);
+  setImg(randomImgId);
+  const randomText = getRandomText();
+  setLineTxt(randomText);
+  renderMeme(gMeme);
+  switchSection();
+}
+
+function getRandomText() {
+  const texts = ["i love memes", "hello", "love code"];
+  const randomIndex = getRandomInt(0, texts.length);
+  return texts[randomIndex];
+}

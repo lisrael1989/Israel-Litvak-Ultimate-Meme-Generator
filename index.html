@@ -32,6 +32,22 @@
 
     <!-- gallery -->
     <section class="main-gallery">
+      <section class="gallery-header flex space-around">
+        <input
+          type="search"
+          placeholder="Search Here"
+          class="search-field"
+          list="keywordsList"
+          oninput="onSetFilterBy(this)"
+        />
+        <button
+          class="flex-btn"
+          title="Make random meme!"
+          onclick="OnFlexible()"
+        >
+          I'm Flexible
+        </button>
+      </section>
       <section class="imgs-container"></section>
     </section>
 
@@ -78,6 +94,7 @@
       </section>
     </section>
 
+    <script src="js/service/utils.js"></script>
     <script src="js/service/storage.js"></script>
     <script src="js/service/meme.service.js"></script>
     <script src="js/meme-controller.js"></script>

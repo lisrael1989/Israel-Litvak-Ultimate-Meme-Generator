@@ -28,16 +28,6 @@
   overflow-y: scroll;
 }
 
-img {
-  cursor: pointer;
-  object-fit: cover;
-  width: 100%;
-  height: 100%;
-  border: 2px solid none;
-  border-radius: 50px;
-  box-shadow: 10px 5px 5px rgb(47, 47, 47);
-}
-
 /*Editor */
 .editor-layout {
   height: 70vh;
