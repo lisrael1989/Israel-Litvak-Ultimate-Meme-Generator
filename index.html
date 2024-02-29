@@ -49,12 +49,20 @@
           oninput="onTxtInput(value)"
         />
         <div>
+          <button onclick="onAddLine()">Add Text</button>
+          <button onclick="onSwitchLine()">Switch Line</button>
+        </div>
+        <div>
           <input type="color" oninput="onChangeColor(value)" />
         </div>
         <div>
           <button onclick="onChangeFontSize(+5)">+</button>
           <button onclick="onChangeFontSize(-5)">-</button>
         </div>
+
+        <a href="#" class="download-meme" onclick="downloadCanvas(this)"
+          >Download Img</a
+        >
       </section>
     </section>
 

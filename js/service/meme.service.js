@@ -26,9 +26,9 @@ let gMeme = {
   selectedLineIdx: 0,
   lines: [
     {
-      txt: "This course so easy ",
-      size: 30,
-      color: "white",
+      txt: "Your Text ",
+      size: 20,
+      color: "black",
       align: "center",
       font: "Impact",
       underline: false,
@@ -78,8 +78,8 @@ function addLine() {
     txt: "text",
     size: 30,
     color: "red",
-    posX: null,
-    posY: null,
+    posX: 5,
+    posY: 3,
     textWidth: null,
     textHight: null,
   });

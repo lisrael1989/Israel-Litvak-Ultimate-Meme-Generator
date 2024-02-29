@@ -27,12 +27,13 @@ function renderMeme(meme) {
 }
 
 function onTxtInput(elTxt) {
-  setLineTxt(elTxt.value);
+  setLineTxt(elTxt);
   renderMeme(gMeme);
 }
 
 function drawLine(line, indx) {
   const margin = indx * 50;
+  const textMargin = 10;
 
   const { txt, size, color } = line;
   gCtx.fillStyle = `${color}`;
@@ -41,24 +42,26 @@ function drawLine(line, indx) {
   gCtx.textAlign = "center";
   gCtx.textBaseline = "middle";
 
-  gCtx.fillText(txt, 200, 100 + margin);
+  // Calculate the width of the text
+  const textWidth = gCtx.measureText(txt).width;
+
+  const textX = gElCanvas.width / 2;
+
+  // Draw the text
+  gCtx.fillText(txt, textX, 100 + margin);
 
   if (indx === gMeme.selectedLineIdx) {
-    const textAspects = gCtx.measureText(txt);
+    // Calculate the y-coordinate and height for the rectangle
+    const textHeight = size + 2 * textMargin;
+    const textY = 100 - textHeight / 2 + margin;
 
-    const textHight =
-      textAspects.actualBoundingBoxAscent +
-      textAspects.actualBoundingBoxDescent +
-      10;
+    // Calculate the x-coordinate for the left edge of the rectangle (subtract half of textWidth)
+    const rectX = textX - textWidth / 2;
 
-    const textWidth = textAspects.width;
+    // Draw the rectangle
+    gCtx.strokeRect(rectX, textY, textWidth, textHeight);
 
-    const x = 200 - textAspects.actualBoundingBoxRight;
-    const y = 100 - textAspects.actualBoundingBoxAscent - 5 + margin;
-
-    gCtx.strokeRect(x, y, textWidth, textHight);
-
-    setLineCoords(indx, x, y, textWidth, textHight);
+    setLineCoords(indx, rectX, textY, textWidth, textHeight);
   }
 }
 
@@ -87,6 +90,9 @@ function drawLines(lines) {
 function onSwitchLine() {
   switchLine();
   renderMeme(gMeme);
+  const selectedLine = gMeme.lines[gMeme.selectedLineIdx];
+  const elTxtInput = document.getElementById("text-input");
+  elTxtInput.placeholder = selectedLine.txt;
 }
 
 function onAddLine() {

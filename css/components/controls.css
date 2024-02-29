@@ -16,3 +16,16 @@
   font-family: inherit;
   text-align: center;
 }
+
+.download-meme {
+  text-decoration: none;
+  padding: 5px 10px;
+  background: #5a7cf7;
+  border: 1px solid #4267b2;
+  border-radius: 3px;
+  /* margin: 3px; */
+
+  font-size: 20px;
+  color: #fff;
+  cursor: pointer;
+}
