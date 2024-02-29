@@ -1,5 +1,6 @@
 "use strict";
 
+const MEME_DB = "memesDB";
 var gImgs = [
   { id: 1, url: "meme-imgs/1.jpg", keywords: ["famous", "tramp"] },
   { id: 2, url: "meme-imgs/2.jpg", keywords: ["pets", "dog"] },
@@ -21,7 +22,7 @@ var gImgs = [
   { id: 18, url: "meme-imgs/18.jpg", keywords: ["movie", "funny"] },
 ];
 
-let gMeme = {
+var gMeme = {
   selectedImgId: null,
   selectedLineIdx: 0,
   lines: [
@@ -32,9 +33,19 @@ let gMeme = {
       align: "center",
       font: "Impact",
       underline: false,
+
+      posX: null,
+      posY: null,
+
+      textWidth: null,
+      textHight: null,
     },
   ],
 };
+
+function getMeme() {
+  return gMeme;
+}
 
 function getImg() {
   return gImgs;
@@ -92,4 +103,25 @@ function setLineCoords(indx, x, y, textWidth, textHight) {
   currLine.posY = y;
   currLine.textWidth = textWidth;
   currLine.textHight = textHight;
+}
+
+function setAlignment(alignment) {
+  const line = gMeme.lines[gMeme.selectedLineIdx];
+  if (line) line.align = alignment;
+  updatePosX();
+}
+
+function updatePosX() {
+  gMeme.lines.forEach(function (line, idx) {
+    if (line.align === "left") line.posX = 10;
+    if (line.align === "right") line.posX = gElCanvas.width - 80;
+    if (line.align === "center") line.posX = gElCanvas.width / 2 - 40;
+  });
+  renderMeme(gMeme);
+}
+
+function changeFont() {
+  var elFont = document.querySelector(".select-font").value;
+  gMeme.font = elFont;
+  renderMeme();
 }
