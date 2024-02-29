@@ -85,14 +85,15 @@ function switchWithClick(idx) {
 }
 
 function addLine() {
+  const defaultPosY = gMeme.lines.length * 50 + 50;
   gMeme.lines.push({
-    txt: "text",
+    txt: "New line",
     size: 30,
     color: "red",
-    posX: 5,
-    posY: 3,
-    textWidth: null,
-    textHight: null,
+    align: "left",
+    font: "Impact",
+    posX: 50,
+    posY: defaultPosY,
   });
   gMeme.selectedLineIdx = gMeme.lines.length - 1;
 }
@@ -112,10 +113,24 @@ function setAlignment(alignment) {
 }
 
 function updatePosX() {
+  const canvasWidth = gElCanvas.width;
+
   gMeme.lines.forEach(function (line, idx) {
-    if (line.align === "left") line.posX = gElCanvas.width - 100;
-    if (line.align === "right") line.posX = 10;
-    if (line.align === "center") line.posX = gElCanvas.width / 2 - 40;
+    gCtx.font = `${line.size}px ${line.font}`;
+    const textWidth = gCtx.measureText(line.txt).width;
+
+    switch (line.align) {
+      case "left":
+        line.posX = 10; // A small margin from the left edge
+        break;
+      case "center":
+        line.posX = canvasWidth / 2; // Center of the canvas
+        break;
+      case "right":
+        line.posX = canvasWidth - textWidth - 10; // Adjusted for the width of the text
+        break;
+    }
   });
+
   renderMeme(gMeme);
 }

@@ -22,7 +22,7 @@
               <a href="#" onclick="switchSection()">Gallery</a>
             </li>
             <li class="saved-memes flex align-center justify-center">
-              <a href="#">Memes</a>
+              <a href="#" onclick="switchToSavedGallery()">Memes</a>
             </li>
 
             <li class="flex align-center justify-center">
@@ -32,7 +32,9 @@
         </nav>
       </div>
     </header>
-
+    <section class="saved-memes-section hide">
+      <div class="saved-memes-container"></div>
+    </section>
     <!-- gallery -->
     <section class="main-gallery">
       <section class="gallery-header flex space-around">
@@ -68,6 +70,7 @@
           name="text-input"
           oninput="onTxtInput(value)"
         />
+
         <div class="text-btn">
           <button class="add-text-btn" onclick="onAddLine()">+</button>
           <button class="switch-btn" onclick="onSwitchLine()">
@@ -77,6 +80,7 @@
             <i class="remove-line fa-solid fa-trash"></i>
           </button>
         </div>
+
         <div class="action-btn">
           <button class="increase-font-size" onclick="onChangeFontSize(+5)">
             A+
@@ -113,7 +117,6 @@
         </div>
       </section>
     </section>
-    <section class="saved-memes"></section>
 
     <script src="js/service/utils.js"></script>
     <script src="js/service/storage.js"></script>

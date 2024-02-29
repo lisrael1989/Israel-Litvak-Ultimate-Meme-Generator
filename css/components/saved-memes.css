@@ -1,10 +1,30 @@
-.saved-memes {
-  display: grid;
-  gap: 20px;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+/* .saved-memes {
+  height: 70vh;
+  background-color: var(--bgPrimary);
+  border-radius: 20px;
+  grid-template-columns: repeat(2, 1fr);
+  margin: 50px 30px;
+  text-align: center;
+  place-self: center;
+} */
+
+.saved-memes-section {
+  height: 70vh;
+  background-color: var(--bgPrimary);
+  border-radius: 20px;
+  grid-template-columns: repeat(2, 1fr);
+  margin: 50px 30px;
 }
 
-.saved-meme img {
-  width: 100%;
+.saved-memes-container {
+  display: flex;
+  justify-content: center;
+  width: 300px;
+  height: 300px;
   height: auto;
+  place-self: center;
+  text-align: center;
+  margin: 30px auto;
+  gap: 30px;
+  padding: 10px;
 }
