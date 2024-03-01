@@ -38,13 +38,28 @@
     <!-- gallery -->
     <section class="main-gallery">
       <section class="gallery-header flex space-around">
-        <input
-          type="search"
-          placeholder="Search Here"
-          class="search-field"
-          list="keywordsList"
-          oninput="onSetFilterBy(this)"
-        />
+        <div>
+          <input
+            type="search"
+            placeholder="Search..."
+            class="search-field"
+            list="keywordsList"
+            oninput="onSetFilterBy({ keywords:this.value})"
+          />
+          <select
+            class="keywords-List"
+            onchange="onSetFilterBy({keywords: this.value})"
+          >
+            <option value="">Filter</option>
+            <option>Famous</option>
+            <option>Tramp</option>
+            <option>Subali</option>
+            <option>Pets</option>
+            <option>Movie</option>
+            <option>Dictator</option>
+            <option>Kids</option>
+          </select>
+        </div>
         <button
           class="flex-btn"
           title="Make random meme!"
