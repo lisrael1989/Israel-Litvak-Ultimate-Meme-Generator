@@ -14,7 +14,7 @@
   font-size: 1em;
   padding: 10px;
   color: rgb(251, 235, 235);
-  font-family: lato/monospace;
+  font-family: lato, cursive;
   background-color: var(--bgPrimary-2);
   border: none;
 }

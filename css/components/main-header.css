@@ -10,12 +10,12 @@
 
 .logo {
   color: var(--font-header);
-  font-family: eurofurence-bold;
+  font-family: eurofurence-bold, monospace;
   font-size: 4em;
 }
 
 .main-nav-list li {
-  font-family: lato;
+  font-family: lato, cursive;
   width: 133px;
   /* margin-top: 10px; */
   transition: 0.4s;
