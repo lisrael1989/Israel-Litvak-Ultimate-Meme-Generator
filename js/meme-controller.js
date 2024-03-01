@@ -15,7 +15,6 @@ function onInit() {
 function renderMeme(meme) {
   const { selectedImgId, lines } = meme;
 
-  // Clear the canvas
   gCtx.clearRect(0, 0, gElCanvas.width, gElCanvas.height);
 
   if (selectedImgId !== null) {
@@ -23,11 +22,11 @@ function renderMeme(meme) {
     const elImg = new Image();
     elImg.onload = function () {
       gCtx.drawImage(elImg, 0, 0, gElCanvas.width, gElCanvas.height);
+      renderIcons();
       lines.forEach((line, index) => drawLine(line, index));
     };
     elImg.src = getImgByIdx(imageIdx);
   } else {
-    // Draw lines even if no image is selected (if that's intended behavior)
     lines.forEach((line, index) => drawLine(line, index));
   }
 }
@@ -128,14 +127,29 @@ function getEvPos(ev) {
 
 function onClick(ev) {
   const clickPos = getEvPos(ev);
+
+  const clickedIconIdx = gMeme.icons.findIndex((icon) => {
+    return (
+      clickPos.x >= icon.x - icon.size / 2 &&
+      clickPos.x <= icon.x + icon.size / 2 &&
+      clickPos.y >= icon.y - icon.size / 2 &&
+      clickPos.y <= icon.y + icon.size / 2
+    );
+  });
+
+  if (clickedIconIdx !== -1) {
+    console.log("Icon clicked:", gMeme.icons[clickedIconIdx]);
+    return;
+  }
+
   gMeme.lines.forEach((line, idx) => {
-    const { posX, posY, textHight, textWidth } = line;
+    const { posX, posY, textHeight, textWidth } = line;
 
     if (
       clickPos.x >= posX &&
       clickPos.x <= posX + textWidth &&
       clickPos.y >= posY &&
-      clickPos.y <= posY + textHight
+      clickPos.y <= posY + textHeight
     ) {
       switchWithClick(idx);
       renderMeme(gMeme);
@@ -219,10 +233,11 @@ function displaySavedMemes() {
   const container = document.querySelector(".saved-memes-container");
   container.innerHTML = "";
 
-  savedMemes.forEach((meme) => {
+  savedMemes.forEach((meme, index) => {
     const imgElement = document.createElement("img");
     imgElement.src = meme.imageUrl;
     imgElement.className = "saved-meme-img";
+    imgElement.onclick = () => editSavedMeme(index);
     container.appendChild(imgElement);
   });
 }
@@ -233,7 +248,17 @@ function editSavedMeme(index) {
   if (memeToEdit) {
     gMeme = memeToEdit;
     renderMeme(gMeme);
-    document.querySelector(".editor").style.display = "block";
+
+    document.querySelector(".saved-memes-section").style.display = "none";
     document.querySelector(".main-gallery").style.display = "none";
+    document.querySelector(".editor").style.display = "grid";
   }
+}
+
+/* icons */
+
+function onSetIcons(iconCharacter) {
+  console.log(iconCharacter);
+  addIcon(iconCharacter);
+  renderMeme(gMeme);
 }

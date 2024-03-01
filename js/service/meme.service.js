@@ -5,6 +5,8 @@ const MEME_DB = "memesDB";
 var gMeme = {
   selectedImgId: null,
   selectedLineIdx: 0,
+  selectedIconIdx: null,
+  icons: [],
   lines: [
     {
       txt: "First line ",
@@ -109,4 +111,26 @@ function updatePosX() {
   });
 
   renderMeme(gMeme);
+}
+
+/* add icons */
+function addIcon(iconCharacter) {
+  const defaultPosY = 200;
+  const defaultPosX = 200;
+
+  gMeme.icons.push({
+    icon: iconCharacter,
+    x: defaultPosX,
+    y: defaultPosY,
+    size: 40,
+  });
+  console.log(iconCharacter);
+}
+
+function renderIcons() {
+  console.log("Rendering icons...", gMeme.icons);
+  gMeme.icons.forEach((icon) => {
+    gCtx.font = `${icon.size}px Arial`;
+    gCtx.fillText(icon.icon, icon.x, icon.y);
+  });
 }

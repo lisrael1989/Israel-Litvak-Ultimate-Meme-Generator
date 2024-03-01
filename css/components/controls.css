@@ -68,7 +68,10 @@
     rgba(13, 91, 213, 0.9864320728291317) 97%
   );
   border-radius: 10px;
-  height: 100px;
+  height: 120px;
+  padding: 10px;
+  width: 400px;
+  margin: 0 auto;
 }
 button {
   margin-right: 10px;
@@ -130,4 +133,20 @@ button {
   box-shadow: 2px 2px 2px #8a8a8a;
   margin-top: 10px;
   margin-bottom: 10px;
+}
+
+.icones-editor {
+  height: 70px;
+  background-color: whitesmoke;
+  display: flex;
+  justify-content: center;
+  border-radius: 10px;
+  margin: 20px auto;
+  width: 300px;
+  cursor: pointer;
+}
+
+.icon {
+  padding: 10px;
+  font-size: 30px;
 }
