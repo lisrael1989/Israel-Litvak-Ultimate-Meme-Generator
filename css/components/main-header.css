@@ -15,9 +15,8 @@
 }
 
 .main-nav-list li {
-  font-family: lato, cursive;
+  font-family: lato, Arial, Helvetica, sans-serif;
   width: 133px;
-  /* margin-top: 10px; */
   transition: 0.4s;
   cursor: pointer;
   justify-content: center;
@@ -28,7 +27,6 @@
 .Gallery-editor {
   text-decoration: none;
   color: var(--font-header);
-  /* cursor: pointer; */
 }
 
 .main-header .main-nav-list a:hover {
@@ -41,5 +39,3 @@
 .main-nav-list li:hover {
   box-shadow: inset 0 -6px 0 var(--primary-nav-hover);
 }
-
-/*toogle*/

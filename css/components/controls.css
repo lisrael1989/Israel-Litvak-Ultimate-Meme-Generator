@@ -14,7 +14,7 @@
   border-radius: 10px;
   margin: 10px;
   padding: 10px;
-  font-family: inherit;
+  font-family: lato, Arial, Helvetica, sans-serif;
   text-align: center;
   box-shadow: 2px 4px 4px #0a0a0a;
 }
@@ -120,7 +120,7 @@ button {
 
 .download-meme {
   text-decoration: none;
-  font-family: lato;
+  font-family: lato, Arial, Helvetica, sans-serif;
 
   padding: 5px 10px;
   background: RGBA(143, 68, 187, 1);
@@ -137,7 +137,7 @@ button {
 
 .save-meme {
   text-decoration: none;
-  font-family: lato;
+  font-family: lato, Arial, Helvetica, sans-serif;
 
   padding: 5px 10px;
   background: RGBA(30, 124, 211, 1);
@@ -153,7 +153,7 @@ button {
 
 .share-meme {
   text-decoration: none;
-  font-family: lato;
+  font-family: lato, Arial, Helvetica, sans-serif;
 
   padding: 5px 10px;
   background: rgb(74, 180, 74);
