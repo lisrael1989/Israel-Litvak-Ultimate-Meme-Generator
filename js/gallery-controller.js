@@ -74,8 +74,6 @@ function showabout() {
   const elGalleryHeder = document.querySelector(".gallery-header");
   const elabout = document.querySelector(".about");
 
-  // console.log(elNavBtnTxt.innerText);
-
   elGallery.classList.toggle("hide");
   elGalleryHeder.classList.toggle("hide");
   elabout.classList.toggle("visible");
@@ -86,7 +84,6 @@ function switchToSection(sectionName) {
   document.getElementById("saved-memes").style.display = "none";
   document.getElementById("editor").style.display = "none";
 
-  // Show the requested section
   if (sectionName === "gallery") {
     document.querySelector(".main-gallery").style.display = "block";
   } else if (sectionName === "memes") {

@@ -94,13 +94,13 @@ function updatePosX() {
 
     switch (line.align) {
       case "left":
-        line.posX = 10; // A small margin from the left edge
+        line.posX = 10;
         break;
       case "center":
-        line.posX = canvasWidth / 2; // Center of the canvas
+        line.posX = canvasWidth / 2;
         break;
       case "right":
-        line.posX = canvasWidth - textWidth - 10; // Adjusted for the width of the text
+        line.posX = canvasWidth - textWidth - 10;
         break;
     }
   });

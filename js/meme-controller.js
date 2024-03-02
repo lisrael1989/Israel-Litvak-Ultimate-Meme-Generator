@@ -59,7 +59,6 @@ function drawLine(line, indx) {
       break;
   }
 
-  // Draw the text
   gCtx.fillText(txt, textX, 100 + margin);
 }
 
@@ -113,10 +112,10 @@ function getEvPos(ev) {
     y: ev.offsetY,
   };
   if (TOUCH_EVS.includes(ev.type)) {
-    // Gets the first touch point
+   
     ev.preventDefault();
     ev = ev.changedTouches[0];
-    // Calc the right pos according to the touch screen
+    
     pos = {
       x: ev.pageX - ev.target.offsetLeft - ev.target.clientLeft,
       y: ev.pageY - ev.target.offsetTop - ev.target.clientTop,
@@ -160,8 +159,6 @@ function switchSection() {
   const elGallery = document.querySelector(".imgs-container");
   const elEditor = document.querySelector(".editor");
   const elGalleryHeder = document.querySelector(".gallery-header");
-
-  // console.log(elNavBtnTxt.innerText);
 
   elGallery.classList.toggle("hide");
   elEditor.classList.toggle("hide");
