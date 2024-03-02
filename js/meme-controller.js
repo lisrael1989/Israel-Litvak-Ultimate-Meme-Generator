@@ -112,10 +112,9 @@ function getEvPos(ev) {
     y: ev.offsetY,
   };
   if (TOUCH_EVS.includes(ev.type)) {
-   
     ev.preventDefault();
     ev = ev.changedTouches[0];
-    
+
     pos = {
       x: ev.pageX - ev.target.offsetLeft - ev.target.clientLeft,
       y: ev.pageY - ev.target.offsetTop - ev.target.clientTop,
@@ -214,7 +213,6 @@ function toggleMenu() {
   }
 }
 
-/*saved memes */
 function onSaveMeme() {
   const memeImageURL = gElCanvas.toDataURL("image/png");
 
@@ -274,14 +272,12 @@ function editSavedMeme(index) {
 }
 
 /* icons */
-
 function onSetIcons(iconCharacter) {
   addIcon(iconCharacter);
   renderMeme(gMeme);
 }
 
 /*share to facebook */
-
 function onImgInput(ev) {
   loadImageFromInput(ev, renderImg);
 }

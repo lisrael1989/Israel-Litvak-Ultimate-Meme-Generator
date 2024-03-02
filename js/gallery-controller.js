@@ -58,8 +58,6 @@ function onSelectImg(id) {
   switchSection();
 }
 
-/* fillter Keywords*/
-
 function onSetFilterBy(filterBy) {
   setFilterBy(filterBy);
   renderGallery();

@@ -108,7 +108,6 @@ function updatePosX() {
   renderMeme(gMeme);
 }
 
-/* add icons */
 function addIcon(iconCharacter) {
   const defaultPosY = 200;
   const defaultPosX = 200;
@@ -129,9 +128,7 @@ function renderIcons() {
   });
 }
 
-/*Share*/
-/*facebook */
-
+/* share to facebook */
 function doUploadImg(imgDataUrl, onSuccess) {
   const formData = new FormData();
   formData.append("img", imgDataUrl);
