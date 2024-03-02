@@ -1,5 +1,5 @@
 .canvas-container {
-  max-width: 60vh;
+  min-width: 20vh;
   place-self: center;
 }
 

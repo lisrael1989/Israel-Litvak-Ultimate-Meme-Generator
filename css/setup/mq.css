@@ -96,3 +96,24 @@
     content: "X";
   }
 }
+
+@media (max-width: 600px) {
+  .editor-layout {
+    display: grid;
+    justify-content: center;
+    padding: 5px;
+    background-color: transparent;
+    border-radius: 20px;
+    grid-template-columns: repeat(auto-fit, minmax(1fr, 200px, 1fr));
+  }
+  .toggle-menu-btn {
+    right: 30px;
+    top: 35px;
+  }
+  .main-header {
+    top: 20px;
+  }
+  .controls {
+    background-color: transparent;
+  }
+}
