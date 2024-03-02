@@ -3,6 +3,8 @@
     position: sticky;
     top: 0;
     min-height: 70px;
+    margin-right: 20px;
+
     border: transparent;
     background-color: black;
     z-index: 1;
@@ -81,7 +83,7 @@
     position: fixed;
     justify-content: center;
     top: 20px;
-    right: 20px;
+    right: 30px;
     height: 50px;
     width: 50px;
     margin: 5px;
@@ -104,14 +106,14 @@
     padding: 5px;
     background-color: transparent;
     border-radius: 20px;
-    grid-template-columns: repeat(auto-fit, minmax(1fr, 200px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(1fr, 100px, 1fr));
   }
   .toggle-menu-btn {
     right: 30px;
     top: 35px;
   }
   .main-header {
-    top: 20px;
+    top: 25px;
   }
   .controls {
     background-color: transparent;
