@@ -138,7 +138,6 @@ function onClick(ev) {
   });
 
   if (clickedIconIdx !== -1) {
-    console.log("Icon clicked:", gMeme.icons[clickedIconIdx]);
     return;
   }
 
@@ -239,6 +238,17 @@ function switchToSavedGallery() {
   displaySavedMemes();
 }
 
+function switchToAboutSection() {
+  const elGallery = document.querySelector(".imgs-container");
+  const elEditor = document.querySelector(".editor");
+  const elGalleryHeder = document.querySelector(".gallery-header");
+
+  elGallery.classList.toggle("hide");
+  elEditor.classList.toggle("hide");
+  elGalleryHeder.classList.toggle("hide");
+  document.querySelector(".about-section").style.display = "block";
+}
+
 function displaySavedMemes() {
   const savedMemes = loadFromStorage(MEME_DB) || [];
   const container = document.querySelector(".saved-memes-container");
@@ -269,7 +279,6 @@ function editSavedMeme(index) {
 /* icons */
 
 function onSetIcons(iconCharacter) {
-  console.log(iconCharacter);
   addIcon(iconCharacter);
   renderMeme(gMeme);
 }
@@ -284,11 +293,9 @@ function onshareMeme() {
   const imgDataUrl = gElCanvas.toDataURL("image/jpeg");
 
   function onSuccess(uploadedImgUrl) {
-    // Handle some special characters
     const url = encodeURIComponent(uploadedImgUrl);
     window.open(`https://www.facebook.com/sharer/sharer.php?u=${url}&t=${url}`);
   }
 
-  // Send the image to the server
   doUploadImg(imgDataUrl, onSuccess);
 }

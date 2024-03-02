@@ -1,7 +1,7 @@
 "use strict";
 
 const MEME_DB = "memesDB";
-
+let isDragging = false;
 var gMeme = {
   selectedImgId: null,
   selectedLineIdx: 0,
@@ -16,11 +16,8 @@ var gMeme = {
       font: "Impact",
       underline: false,
 
-      posX: null,
-      posY: null,
-
-      textWidth: null,
-      textHight: null,
+      posX: 250,
+      posY: 250,
     },
   ],
 };
@@ -29,10 +26,8 @@ function getMeme() {
   return gMeme;
 }
 
-function getImgByIdx(idx = null) {
-  if (idx !== null) {
-    return gImgs[idx].url;
-  }
+function getImgByIdx(idx) {
+  return gImgs[idx].url;
 }
 
 function setLineTxt(elTxt) {
@@ -128,7 +123,6 @@ function addIcon(iconCharacter) {
 }
 
 function renderIcons() {
-  console.log("Rendering icons...", gMeme.icons);
   gMeme.icons.forEach((icon) => {
     gCtx.font = `${icon.size}px Arial`;
     gCtx.fillText(icon.icon, icon.x, icon.y);

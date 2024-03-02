@@ -68,3 +68,30 @@ function onSetFilterBy(filterBy) {
 function setFilterBy(filterBy) {
   if (filterBy.keywords !== undefined) gFilterBy.keywords = filterBy.keywords;
 }
+
+function showabout() {
+  const elGallery = document.querySelector(".imgs-container");
+  const elGalleryHeder = document.querySelector(".gallery-header");
+  const elabout = document.querySelector(".about");
+
+  // console.log(elNavBtnTxt.innerText);
+
+  elGallery.classList.toggle("hide");
+  elGalleryHeder.classList.toggle("hide");
+  elabout.classList.toggle("visible");
+}
+
+function switchToSection(sectionName) {
+  document.querySelector(".main-gallery").style.display = "none";
+  document.getElementById("saved-memes").style.display = "none";
+  document.getElementById("editor").style.display = "none";
+
+  // Show the requested section
+  if (sectionName === "gallery") {
+    document.querySelector(".main-gallery").style.display = "block";
+  } else if (sectionName === "memes") {
+    document.getElementById("saved-memes").style.display = "block";
+  } else if (sectionName === "editor") {
+    document.getElementById("editor").style.display = "block";
+  }
+}
