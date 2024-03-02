@@ -273,3 +273,22 @@ function onSetIcons(iconCharacter) {
   addIcon(iconCharacter);
   renderMeme(gMeme);
 }
+
+/*share to facebook */
+
+function onImgInput(ev) {
+  loadImageFromInput(ev, renderImg);
+}
+
+function onshareMeme() {
+  const imgDataUrl = gElCanvas.toDataURL("image/jpeg");
+
+  function onSuccess(uploadedImgUrl) {
+    // Handle some special characters
+    const url = encodeURIComponent(uploadedImgUrl);
+    window.open(`https://www.facebook.com/sharer/sharer.php?u=${url}&t=${url}`);
+  }
+
+  // Send the image to the server
+  doUploadImg(imgDataUrl, onSuccess);
+}

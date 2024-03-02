@@ -64,6 +64,7 @@
   border: 2px solid rgb(227, 16, 16);
   border-radius: 10px;
   box-shadow: 2px 4px 4px #050404;
+  justify-content: center;
 }
 
 .action-btn {
@@ -140,6 +141,22 @@ button {
 
   padding: 5px 10px;
   background: RGBA(30, 124, 211, 1);
+  box-shadow: 2px 4px 4px #0a0a0a;
+
+  border: none;
+  border-radius: 10px;
+
+  font-size: 20px;
+  color: #fff;
+  cursor: pointer;
+}
+
+.share-meme {
+  text-decoration: none;
+  font-family: lato;
+
+  padding: 5px 10px;
+  background: rgb(74, 180, 74);
   box-shadow: 2px 4px 4px #0a0a0a;
 
   border: none;
