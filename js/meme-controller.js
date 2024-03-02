@@ -207,6 +207,17 @@ function changeFont() {
   }
 }
 
+function toggleMenu() {
+  document.body.classList.toggle("menu-open");
+  const menuButton = document.querySelector(".toggle-menu-btn");
+
+  if (document.body.classList.contains("menu-open")) {
+    menuButton.textContent = "X";
+  } else {
+    menuButton.textContent = "☰";
+  }
+}
+
 /*saved memes */
 function onSaveMeme() {
   const memeImageURL = gElCanvas.toDataURL("image/png");
