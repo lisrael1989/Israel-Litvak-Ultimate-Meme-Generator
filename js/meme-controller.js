@@ -1,6 +1,11 @@
 "use strict";
 
 const TOUCH_EVS = ["touchstart", "touchmove", "touchend"];
+let isDragging = false;
+let draggedElement = null;
+let draggedElementType = null;
+let offsetX = 0;
+let offsetY = 0;
 
 window.onload = onInit;
 let gElCanvas;
@@ -9,6 +14,11 @@ let gCtx;
 function onInit() {
   gElCanvas = document.querySelector("canvas");
   gCtx = gElCanvas.getContext("2d");
+
+  gElCanvas.addEventListener("mousedown", onMouseDown);
+  gElCanvas.addEventListener("mousemove", onMouseMove);
+  gElCanvas.addEventListener("mouseup", onMouseUp);
+  gElCanvas.addEventListener("mouseleave", onMouseUp);
 
   window.addEventListener("resize", resizeCanvas);
   gElCanvas.addEventListener("click", onClick);
@@ -146,13 +156,20 @@ function onClick(ev) {
   }
 }
 
-function onRemoveLine() {
-  if (gMeme.lines.length > 0) {
+function onRemoveSelected() {
+  // Check if a line is selected
+  if (gMeme.selectedLineIdx !== null && gMeme.lines.length > 0) {
     gMeme.lines.splice(gMeme.selectedLineIdx, 1);
-    gMeme.selectedLineIdx = Math.max(0, gMeme.selectedLineIdx - 1);
+    gMeme.selectedLineIdx = null; // Reset selected line index
+    renderMeme(gMeme);
+  }
+  // Check if an icon is selected
+  else if (gMeme.selectedIconIdx !== null && gMeme.icons.length > 0) {
+    gMeme.icons.splice(gMeme.selectedIconIdx, 1);
+    gMeme.selectedIconIdx = null; // Reset selected icon index
     renderMeme(gMeme);
   } else {
-    console.log("No lines to remove");
+    console.log("No elements to remove");
   }
 }
 
@@ -289,6 +306,82 @@ function onSetLinePosLeft() {
 function onAlignText(alignment) {
   setAlignment(alignment);
   renderMeme(gMeme);
+}
+
+/*drag and drop */
+
+function onMouseDown(e) {
+  const { x, y } = getMousePos(gElCanvas, e);
+
+  const iconIdx = gMeme.icons.findIndex((icon) => isMouseOnElement(x, y, icon));
+  if (iconIdx !== -1) {
+    startDrag(gMeme.icons[iconIdx], "icon");
+    return;
+  }
+
+  const lineIdx = gMeme.lines.findIndex((line) =>
+    isMouseOnElement(x, y, line, true)
+  );
+  if (lineIdx !== -1) {
+    startDrag(gMeme.lines[lineIdx], "line");
+    return;
+  }
+}
+
+function onMouseMove(e) {
+  if (!isDragging) return;
+  const { x, y } = getMousePos(gElCanvas, e);
+  draggedElement.x = x - offsetX;
+  draggedElement.y = y - offsetY;
+
+  if (draggedElementType === "line") {
+    draggedElement.posX = x - offsetX;
+    draggedElement.posY = y - offsetY;
+  }
+
+  renderMeme(gMeme);
+}
+
+function onMouseUp() {
+  if (isDragging) {
+    isDragging = false;
+    draggedElement = null;
+    draggedElementType = null;
+  }
+}
+
+function getMousePos(canvas, evt) {
+  var rect = canvas.getBoundingClientRect();
+  return {
+    x: evt.clientX - rect.left,
+    y: evt.clientY - rect.top,
+  };
+}
+
+function isMouseOnElement(x, y, element, isLine = false) {
+  if (isLine) {
+    return (
+      x >= element.posX &&
+      x <= element.posX + 100 &&
+      y >= element.posY - 30 &&
+      y <= element.posY + 10
+    );
+  } else {
+    return (
+      x >= element.x - element.size / 2 &&
+      x <= element.x + element.size / 2 &&
+      y >= element.y - element.size / 2 &&
+      y <= element.y + element.size / 2
+    );
+  }
+}
+
+function startDrag(element, type) {
+  isDragging = true;
+  draggedElement = element;
+  draggedElementType = type;
+  offsetX = gMouseX - element.x;
+  offsetY = gMouseY - element.y;
 }
 
 /*SWITCH SECTIONS */

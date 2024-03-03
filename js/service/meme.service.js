@@ -1,7 +1,6 @@
 "use strict";
 
 const MEME_DB = "memesDB";
-let isDrag = false;
 var gMeme = {
   selectedImgId: null,
   selectedLineIdx: 0,
