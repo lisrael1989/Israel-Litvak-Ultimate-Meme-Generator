@@ -55,7 +55,12 @@ function getImg() {
 function onSelectImg(id) {
   setImg(id);
   renderMeme(gMeme);
-  switchSection();
+
+  document.getElementById("aboutSection").classList.add("hide");
+  document.querySelector(".main-gallery").classList.add("hide");
+  document.querySelector(".saved-memes-section").classList.add("hide");
+
+  document.querySelector(".editor").classList.remove("hide");
 }
 
 function onSetFilterBy(filterBy) {

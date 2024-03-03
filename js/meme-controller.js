@@ -114,7 +114,6 @@ function getEvPos(ev) {
 function onClick(ev) {
   const clickPos = getEvPos(ev);
 
-  // Attempt to find a clicked icon
   const clickedIconIdx = gMeme.icons.findIndex((icon) => {
     return (
       clickPos.x >= icon.x - icon.size / 2 &&
@@ -124,17 +123,15 @@ function onClick(ev) {
     );
   });
 
-  // If an icon was clicked, update the selected icon index
   if (clickedIconIdx !== -1) {
     gMeme.selectedIconIdx = clickedIconIdx;
   } else {
-    // If no icon was clicked, check for line clicks or reset selected icon
-    gMeme.selectedIconIdx = null; // Reset selected icon if other canvas areas are clicked
+    gMeme.selectedIconIdx = null;
     gMeme.lines.forEach((line, idx) => {
       const { posX, posY, size } = line;
       gCtx.font = `${line.size}px ${line.font}`;
       const textWidth = gCtx.measureText(line.txt).width;
-      const textHeight = line.size; // Simplified assumption; actual height may vary
+      const textHeight = line.size;
 
       if (
         clickPos.x >= posX - textWidth / 2 &&
@@ -296,33 +293,40 @@ function onAlignText(alignment) {
 
 /*SWITCH SECTIONS */
 function switchSection() {
+  document.getElementById("aboutSection").classList.add("hide");
+
   const elGallery = document.querySelector(".imgs-container");
   const elEditor = document.querySelector(".editor-layout");
-  const elGalleryHeder = document.querySelector(".gallery-header");
+  const elGalleryHeader = document.querySelector(".gallery-header");
 
   elGallery.classList.toggle("hide");
   elEditor.classList.toggle("hide");
-  elGalleryHeder.classList.toggle("hide");
+  elGalleryHeader.classList.toggle("hide");
 }
 
-// function switchToSavedGallery() {
-//   document.querySelector(".editor").style.display = "none";
-//   document.querySelector(".main-gallery").style.display = "none";
-//   document.querySelector(".saved-memes-section").style.display = "block";
-//   displaySavedMemes();
-// }
+function switchToGallery() {
+  document.querySelector(".editor").classList.add("hide");
+  document.querySelector(".saved-memes-section").classList.add("hide");
+  document.getElementById("aboutSection").classList.add("hide");
+
+  document.querySelector(".main-gallery").classList.remove("hide");
+
+  document.querySelector(".gallery-header").classList.remove("hide");
+
+  renderGallery();
+}
+
+function switchToSavedGallery() {
+  document.getElementById("aboutSection").classList.add("hide");
+  document.querySelector(".editor").classList.add("hide");
+  document.querySelector(".main-gallery").classList.add("hide");
+  document.querySelector(".saved-memes-section").classList.remove("hide");
+}
 
 function showabout() {
-  // Explicitly hide other sections
   document.querySelector(".main-gallery").classList.add("hide");
-  document.querySelector("#editor").classList.add("hide"); // Use ID if unique
-  document.querySelector("#saved-memes").classList.add("hide"); // Use ID if unique
+  document.querySelector(".editor").classList.add("hide");
+  document.querySelector(".saved-memes-section").classList.add("hide");
 
-  // Show the About section
-  const aboutSection = document.querySelector(".about");
-  if (aboutSection) {
-    aboutSection.classList.remove("hide");
-  } else {
-    console.error("About section not found"); // Helps debug if the section is not found
-  }
+  document.getElementById("aboutSection").classList.remove("hide");
 }

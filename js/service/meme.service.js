@@ -128,7 +128,7 @@ function renderIcons() {
 }
 
 function moveIcon(direction) {
-  if (gMeme.selectedIconIdx == null) return; // No icon selected
+  if (gMeme.selectedIconIdx == null) return;
 
   const icon = gMeme.icons[gMeme.selectedIconIdx];
   switch (direction) {
