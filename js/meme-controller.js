@@ -162,7 +162,7 @@ function OnFlexible() {
   const randomText = getRandomText();
   setLineTxt(randomText);
   renderMeme(gMeme);
-  switchSection();
+  switchToEditor();
 }
 
 function getRandomText() {
@@ -292,17 +292,17 @@ function onAlignText(alignment) {
 }
 
 /*SWITCH SECTIONS */
-function switchSection() {
-  document.getElementById("aboutSection").classList.add("hide");
+// function switchSection() {
+//   document.getElementById("aboutSection").classList.add("hide");
 
-  const elGallery = document.querySelector(".imgs-container");
-  const elEditor = document.querySelector(".editor-layout");
-  const elGalleryHeader = document.querySelector(".gallery-header");
+//   const elGallery = document.querySelector(".imgs-container");
+//   const elEditor = document.querySelector(".editor-layout");
+//   const elGalleryHeader = document.querySelector(".gallery-header");
 
-  elGallery.classList.toggle("hide");
-  elEditor.classList.toggle("hide");
-  elGalleryHeader.classList.toggle("hide");
-}
+//   elGallery.classList.toggle("hide");
+//   elEditor.classList.toggle("hide");
+//   elGalleryHeader.classList.toggle("hide");
+// }
 
 function switchToGallery() {
   document.querySelector(".editor").classList.add("hide");
@@ -320,7 +320,10 @@ function switchToSavedGallery() {
   document.getElementById("aboutSection").classList.add("hide");
   document.querySelector(".editor").classList.add("hide");
   document.querySelector(".main-gallery").classList.add("hide");
+
   document.querySelector(".saved-memes-section").classList.remove("hide");
+
+  displaySavedMemes();
 }
 
 function showabout() {
@@ -329,4 +332,12 @@ function showabout() {
   document.querySelector(".saved-memes-section").classList.add("hide");
 
   document.getElementById("aboutSection").classList.remove("hide");
+}
+
+function switchToEditor() {
+  document.getElementById("aboutSection").classList.add("hide");
+  document.querySelector(".main-gallery").classList.add("hide");
+  document.querySelector(".saved-memes-section").classList.add("hide");
+
+  document.querySelector(".editor").classList.remove("hide");
 }
