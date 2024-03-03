@@ -1,7 +1,7 @@
 "use strict";
 
 const MEME_DB = "memesDB";
-let isDragging = false;
+let isDrag = false;
 var gMeme = {
   selectedImgId: null,
   selectedLineIdx: 0,
@@ -14,8 +14,6 @@ var gMeme = {
       color: "black",
       align: "center",
       font: "Impact",
-      underline: false,
-
       posX: 250,
       posY: 250,
     },
@@ -30,8 +28,9 @@ function getImgByIdx(idx) {
   return gImgs[idx].url;
 }
 
-function setLineTxt(elTxt) {
-  gMeme.lines[gMeme.selectedLineIdx].txt = elTxt;
+function setLineTxt(text) {
+  gMeme.lines[gMeme.selectedLineIdx].txt = text;
+  renderMeme(gMeme);
 }
 
 function setImg(id) {
@@ -128,6 +127,27 @@ function renderIcons() {
   });
 }
 
+function moveIcon(direction) {
+  if (gMeme.selectedIconIdx == null) return; // No icon selected
+
+  const icon = gMeme.icons[gMeme.selectedIconIdx];
+  switch (direction) {
+    case "up":
+      icon.y -= 10;
+      break;
+    case "down":
+      icon.y += 10;
+      break;
+    case "left":
+      icon.x -= 10;
+      break;
+    case "right":
+      icon.x += 10;
+      break;
+  }
+  renderMeme(gMeme);
+}
+
 /* share to facebook */
 function doUploadImg(imgDataUrl, onSuccess) {
   const formData = new FormData();
@@ -152,4 +172,25 @@ function doUploadImg(imgDataUrl, onSuccess) {
   };
   XHR.open("POST", "//ca-upload.com/here/upload.php");
   XHR.send(formData);
+}
+
+/* movment */
+function setLinePosDown() {
+  gMeme.lines[gMeme.selectedLineIdx].posY += 10;
+  renderMeme(gMeme);
+}
+
+function setLinePosUp() {
+  gMeme.lines[gMeme.selectedLineIdx].posY -= 10;
+  renderMeme(gMeme);
+}
+
+function setLinePosRight() {
+  gMeme.lines[gMeme.selectedLineIdx].posX += 10;
+  renderMeme(gMeme);
+}
+
+function setLinePosLeft() {
+  gMeme.lines[gMeme.selectedLineIdx].posX -= 10;
+  renderMeme(gMeme);
 }

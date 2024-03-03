@@ -2,6 +2,7 @@
 
 const TOUCH_EVS = ["touchstart", "touchmove", "touchend"];
 
+window.onload = onInit;
 let gElCanvas;
 let gCtx;
 
@@ -9,7 +10,9 @@ function onInit() {
   gElCanvas = document.querySelector("canvas");
   gCtx = gElCanvas.getContext("2d");
 
+  window.addEventListener("resize", resizeCanvas);
   gElCanvas.addEventListener("click", onClick);
+  resizeCanvas();
 }
 
 function renderMeme(meme) {
@@ -37,29 +40,14 @@ function onTxtInput(elTxt) {
 }
 
 function drawLine(line, indx) {
-  const margin = indx * 50;
-  const textMargin = 10;
+  const { txt, size, color, align, font, posX, posY } = line;
 
-  const { txt, size, color, align, font } = line;
   gCtx.fillStyle = color;
   gCtx.font = `${size}px ${font}`;
   gCtx.textAlign = align;
   gCtx.textBaseline = "middle";
 
-  let textX;
-  switch (align) {
-    case "left":
-      textX = 10;
-      break;
-    case "center":
-      textX = gElCanvas.width / 2;
-      break;
-    case "right":
-      textX = gElCanvas.width - 10;
-      break;
-  }
-
-  gCtx.fillText(txt, textX, 100 + margin);
+  gCtx.fillText(txt, posX, posY);
 }
 
 function downloadCanvas(elLink) {
@@ -126,6 +114,7 @@ function getEvPos(ev) {
 function onClick(ev) {
   const clickPos = getEvPos(ev);
 
+  // Attempt to find a clicked icon
   const clickedIconIdx = gMeme.icons.findIndex((icon) => {
     return (
       clickPos.x >= icon.x - icon.size / 2 &&
@@ -135,33 +124,29 @@ function onClick(ev) {
     );
   });
 
+  // If an icon was clicked, update the selected icon index
   if (clickedIconIdx !== -1) {
-    return;
+    gMeme.selectedIconIdx = clickedIconIdx;
+  } else {
+    // If no icon was clicked, check for line clicks or reset selected icon
+    gMeme.selectedIconIdx = null; // Reset selected icon if other canvas areas are clicked
+    gMeme.lines.forEach((line, idx) => {
+      const { posX, posY, size } = line;
+      gCtx.font = `${line.size}px ${line.font}`;
+      const textWidth = gCtx.measureText(line.txt).width;
+      const textHeight = line.size; // Simplified assumption; actual height may vary
+
+      if (
+        clickPos.x >= posX - textWidth / 2 &&
+        clickPos.x <= posX + textWidth / 2 &&
+        clickPos.y >= posY - textHeight / 2 &&
+        clickPos.y <= posY + textHeight / 2
+      ) {
+        switchWithClick(idx);
+        renderMeme(gMeme);
+      }
+    });
   }
-
-  gMeme.lines.forEach((line, idx) => {
-    const { posX, posY, textHeight, textWidth } = line;
-
-    if (
-      clickPos.x >= posX &&
-      clickPos.x <= posX + textWidth &&
-      clickPos.y >= posY &&
-      clickPos.y <= posY + textHeight
-    ) {
-      switchWithClick(idx);
-      renderMeme(gMeme);
-    }
-  });
-}
-
-function switchSection() {
-  const elGallery = document.querySelector(".imgs-container");
-  const elEditor = document.querySelector(".editor-layout");
-  const elGalleryHeder = document.querySelector(".gallery-header");
-
-  elGallery.classList.toggle("hide");
-  elEditor.classList.toggle("hide");
-  elGalleryHeder.classList.toggle("hide");
 }
 
 function onRemoveLine() {
@@ -187,11 +172,6 @@ function getRandomText() {
   const texts = ["i love memes", "hello", "love code"];
   const randomIndex = getRandomInt(0, texts.length);
   return texts[randomIndex];
-}
-
-function onAlignText(alignment) {
-  setAlignment(alignment);
-  renderMeme(gMeme);
 }
 
 function changeFont() {
@@ -226,24 +206,6 @@ function onSaveMeme() {
   switchToSavedGallery();
 }
 
-function switchToSavedGallery() {
-  document.querySelector(".editor").style.display = "none";
-  document.querySelector(".main-gallery").style.display = "none";
-  document.querySelector(".saved-memes-section").style.display = "block";
-  displaySavedMemes();
-}
-
-function switchToAboutSection() {
-  const elGallery = document.querySelector(".imgs-container");
-  const elEditor = document.querySelector(".editor");
-  const elGalleryHeder = document.querySelector(".gallery-header");
-
-  elGallery.classList.toggle("hide");
-  elEditor.classList.toggle("hide");
-  elGalleryHeder.classList.toggle("hide");
-  document.querySelector(".about-section").style.display = "block";
-}
-
 function displaySavedMemes() {
   const savedMemes = loadFromStorage(MEME_DB) || [];
   const container = document.querySelector(".saved-memes-container");
@@ -271,6 +233,23 @@ function editSavedMeme(index) {
   }
 }
 
+function resizeCanvas() {
+  const maxWidth = 400;
+  const maxHeight = 400;
+  const minWidth = 300;
+  const minHeight = 300;
+
+  if (window.innerWidth < 500) {
+    gElCanvas.width = minWidth;
+    gElCanvas.height = minHeight;
+  } else {
+    gElCanvas.width = maxWidth;
+    gElCanvas.height = maxHeight;
+  }
+
+  renderMeme(gMeme);
+}
+
 /* icons */
 function onSetIcons(iconCharacter) {
   addIcon(iconCharacter);
@@ -291,4 +270,59 @@ function onshareMeme() {
   }
 
   doUploadImg(imgDataUrl, onSuccess);
+}
+
+/*movment */
+function onSetLinePosDown() {
+  setLinePosDown();
+}
+
+function onSetLinePosUp() {
+  setLinePosUp();
+}
+
+function onSetLinePosRight() {
+  setLinePosRight();
+}
+
+function onSetLinePosLeft() {
+  setLinePosLeft();
+}
+
+function onAlignText(alignment) {
+  setAlignment(alignment);
+  renderMeme(gMeme);
+}
+
+/*SWITCH SECTIONS */
+function switchSection() {
+  const elGallery = document.querySelector(".imgs-container");
+  const elEditor = document.querySelector(".editor-layout");
+  const elGalleryHeder = document.querySelector(".gallery-header");
+
+  elGallery.classList.toggle("hide");
+  elEditor.classList.toggle("hide");
+  elGalleryHeder.classList.toggle("hide");
+}
+
+// function switchToSavedGallery() {
+//   document.querySelector(".editor").style.display = "none";
+//   document.querySelector(".main-gallery").style.display = "none";
+//   document.querySelector(".saved-memes-section").style.display = "block";
+//   displaySavedMemes();
+// }
+
+function showabout() {
+  // Explicitly hide other sections
+  document.querySelector(".main-gallery").classList.add("hide");
+  document.querySelector("#editor").classList.add("hide"); // Use ID if unique
+  document.querySelector("#saved-memes").classList.add("hide"); // Use ID if unique
+
+  // Show the About section
+  const aboutSection = document.querySelector(".about");
+  if (aboutSection) {
+    aboutSection.classList.remove("hide");
+  } else {
+    console.error("About section not found"); // Helps debug if the section is not found
+  }
 }

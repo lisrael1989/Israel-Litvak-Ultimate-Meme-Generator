@@ -3,6 +3,7 @@
   border-radius: 30px;
   margin: 10px 10px;
 }
+
 .gallery-header {
   padding: 10px;
 
@@ -28,6 +29,7 @@
   padding: 10px;
   box-shadow: var(--boxShadowPrimary);
 }
+
 img {
   cursor: pointer;
   object-fit: cover;
@@ -35,9 +37,22 @@ img {
   height: 100%;
   border: 2px solid none;
   border-radius: 50px;
-  box-shadow: 10px 5px 5px rgb(47, 47, 47);
+  box-shadow: 9px 7px 10px 1px #575757;
+}
+img:hover {
+  transform: scale(1.1);
+  box-shadow: 4px 1px 20px 1px var(--add-txt-line);
 }
 
+.flex-btn:hover {
+  transform: scale(1.2);
+  box-shadow: 4px 1px 20px 1px var(--add-txt-line);
+}
+
+.search-field:hover {
+  transform: scale(1.2);
+  box-shadow: 4px 1px 20px 1px blue;
+}
 /* scrollbar*/
 
 /* width */

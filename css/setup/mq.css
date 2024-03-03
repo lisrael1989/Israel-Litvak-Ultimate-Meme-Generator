@@ -93,8 +93,15 @@
   .menu-open #menu-icon::before {
     content: "X";
   }
+
   .editor-layout {
     margin: 100px 20px;
+  }
+  .canvas-continer {
+    width: 100%;
+    max-height: 250px;
+    margin: auto;
+    height: auto;
   }
 }
 
@@ -117,7 +124,11 @@
 
   .controls {
     background-color: transparent;
-    margin-right: 20px;
+    /* margin-right: 20px; */
+    max-width: 300px;
+    place-self: center;
+    justify-content: center;
+    align-items: center;
   }
 
   .main-nav {
@@ -125,14 +136,23 @@
   }
 
   #editor {
-    margin: 150px auto;
+    /* margin: 150px auto; */
     background-color: transparent;
+    place-self: center;
+    justify-content: center;
+    align-items: center;
+    justify-items: center;
   }
 
-  .canvas-continer canvas {
-    padding: 0;
-    margin-right: 10px;
-
-    text-align: center;
+  .canvas-container {
+    max-width: 300px;
+    margin-right: 20px;
+    place-self: center;
+    justify-content: center;
+    align-items: center;
+    justify-items: center;
+  }
+  .action-btn {
+    max-width: 300px;
   }
 }

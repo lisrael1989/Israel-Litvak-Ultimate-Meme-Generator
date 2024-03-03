@@ -1,5 +1,14 @@
+/* .canvas-container {
+
+  place-self: center;
+} */
+
 .canvas-container {
-  min-width: 20vh;
+  width: 100%;
+  max-width: 400px; /* Max canvas width */
+  height: auto;
+  display: flex;
+
   place-self: center;
 }
 
