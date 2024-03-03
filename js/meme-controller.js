@@ -6,6 +6,8 @@ let draggedElement = null;
 let draggedElementType = null;
 let offsetX = 0;
 let offsetY = 0;
+let lastRenderTime = 0;
+const renderThrottleTime = 16;
 
 window.onload = onInit;
 let gElCanvas;
@@ -157,16 +159,13 @@ function onClick(ev) {
 }
 
 function onRemoveSelected() {
-  // Check if a line is selected
   if (gMeme.selectedLineIdx !== null && gMeme.lines.length > 0) {
     gMeme.lines.splice(gMeme.selectedLineIdx, 1);
-    gMeme.selectedLineIdx = null; // Reset selected line index
+    gMeme.selectedLineIdx = null;
     renderMeme(gMeme);
-  }
-  // Check if an icon is selected
-  else if (gMeme.selectedIconIdx !== null && gMeme.icons.length > 0) {
+  } else if (gMeme.selectedIconIdx !== null && gMeme.icons.length > 0) {
     gMeme.icons.splice(gMeme.selectedIconIdx, 1);
-    gMeme.selectedIconIdx = null; // Reset selected icon index
+    gMeme.selectedIconIdx = null;
     renderMeme(gMeme);
   } else {
     console.log("No elements to remove");
@@ -330,16 +329,21 @@ function onMouseDown(e) {
 
 function onMouseMove(e) {
   if (!isDragging) return;
-  const { x, y } = getMousePos(gElCanvas, e);
-  draggedElement.x = x - offsetX;
-  draggedElement.y = y - offsetY;
 
-  if (draggedElementType === "line") {
+  const currentTime = Date.now();
+  if (currentTime - lastRenderTime < renderThrottleTime) return;
+
+  const { x, y } = getMousePos(gElCanvas, e);
+  if (draggedElementType === "icon") {
+    draggedElement.x = x - offsetX;
+    draggedElement.y = y - offsetY;
+  } else if (draggedElementType === "line") {
     draggedElement.posX = x - offsetX;
     draggedElement.posY = y - offsetY;
   }
 
-  renderMeme(gMeme);
+  renderMeme(gMeme); // Perform the render
+  lastRenderTime = currentTime; // Update the last render time
 }
 
 function onMouseUp() {
