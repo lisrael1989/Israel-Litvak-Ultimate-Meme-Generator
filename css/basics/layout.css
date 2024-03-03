@@ -20,7 +20,6 @@
 }
 
 /*img grid*/
-
 .imgs-container {
   display: grid;
   padding: 20px 80px;
@@ -28,7 +27,6 @@
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   grid-auto-flow: dense;
   overflow-y: scroll;
-  /* background-color: rgb(65, 64, 64); */
 }
 
 /*Editor */
@@ -39,7 +37,6 @@
   border-radius: 20px;
   grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
   grid-auto-flow: dense;
-  /* grid-template-rows: auto 1fr auto; */
   margin: 50px 30px;
   text-align: center;
   place-self: center;

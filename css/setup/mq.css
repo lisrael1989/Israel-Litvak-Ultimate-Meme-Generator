@@ -1,29 +1,31 @@
 @media (max-width: 1000px) {
   .main-header {
-    position: sticky;
+    position: fixed;
+
     top: 0;
     min-height: 70px;
     margin-right: 20px;
 
-    border: transparent;
+    border: 1px solid transparent;
     background-color: black;
     z-index: 1;
   }
 
   .main-nav {
     position: fixed;
-
     top: 100px;
     right: 20px;
     left: 20px;
-    height: 100dvh;
-
+    height: 100vh;
     text-align: center;
-
-    color: whitesmoke;
+    color: var(--white-smok);
     transform: translateX(100%);
     transition: transform 0.6s, box-shadow 0.6s;
     z-index: 10;
+  }
+
+  .gallery-header {
+    margin-top: 100px;
   }
 
   body.menu-open .main-nav {
@@ -48,18 +50,12 @@
 
   .main-header .main-nav-list a:hover {
     border-radius: 10px;
-
-    position: sticky;
   }
 
   .main-nav-list li:hover {
     box-shadow: none;
     background: rgb(133, 228, 142);
-    background: radial-gradient(
-      circle,
-      rgba(133, 228, 142, 1) 2%,
-      rgba(13, 91, 213, 0.9864320728291317) 97%
-    );
+    background: var(--gradientPrimary);
   }
 
   .main-nav .main-nav-list a {
@@ -97,11 +93,15 @@
   .menu-open #menu-icon::before {
     content: "X";
   }
+  .editor {
+    margin-top: 100px;
+  }
 }
 
 @media (max-width: 600px) {
   .editor-layout {
     display: grid;
+    margin: 0 auto;
     justify-content: center;
     padding: 5px;
     background-color: transparent;
@@ -110,12 +110,29 @@
   }
   .toggle-menu-btn {
     right: 30px;
-    top: 35px;
+    top: 45px;
+    display: block;
+    position: fixed;
   }
   .main-header {
     top: 25px;
+    margin-bottom: 25px;
+  }
+
+  .gallery-header {
+    margin-top: 120px;
   }
   .controls {
     background-color: transparent;
+    max-height: 150px;
+  }
+  img {
+    max-height: 100px;
+  }
+  .main-nav {
+    margin-top: 30px;
+  }
+  .editor {
+    margin-top: 130px;
   }
 }
