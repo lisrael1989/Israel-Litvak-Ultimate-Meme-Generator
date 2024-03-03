@@ -292,17 +292,6 @@ function onAlignText(alignment) {
 }
 
 /*SWITCH SECTIONS */
-// function switchSection() {
-//   document.getElementById("aboutSection").classList.add("hide");
-
-//   const elGallery = document.querySelector(".imgs-container");
-//   const elEditor = document.querySelector(".editor-layout");
-//   const elGalleryHeader = document.querySelector(".gallery-header");
-
-//   elGallery.classList.toggle("hide");
-//   elEditor.classList.toggle("hide");
-//   elGalleryHeader.classList.toggle("hide");
-// }
 
 function switchToGallery() {
   document.querySelector(".editor").classList.add("hide");
