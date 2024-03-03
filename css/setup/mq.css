@@ -100,14 +100,15 @@
 
 @media (max-width: 600px) {
   .toggle-menu-btn {
-    right: 30px;
-    top: 45px;
+    right: 25px;
+    top: 35px;
     display: block;
     position: fixed;
   }
 
   .main-header {
     top: 25px;
+    margin: 0 auto;
   }
 
   .gallery-header {
@@ -124,6 +125,14 @@
   }
 
   #editor {
-    margin: 150px 20px;
+    margin: 150px auto;
+    background-color: transparent;
+  }
+
+  .canvas-continer canvas {
+    padding: 0;
+    margin-right: 10px;
+
+    text-align: center;
   }
 }
