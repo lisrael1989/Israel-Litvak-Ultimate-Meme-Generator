@@ -103,6 +103,12 @@
     margin: auto;
     height: auto;
   }
+
+  .full-name {
+    padding: 20px;
+    margin-top: 100px;
+    margin-bottom: 10px;
+  }
 }
 
 @media (max-width: 600px) {
@@ -154,5 +160,11 @@
   }
   .action-btn {
     max-width: 300px;
+  }
+
+  .full-name {
+    padding: 20px;
+    margin-top: 100px;
+    margin-bottom: 10px;
   }
 }
