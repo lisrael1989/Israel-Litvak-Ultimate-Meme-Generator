@@ -156,7 +156,7 @@ function onClick(ev) {
 
 function switchSection() {
   const elGallery = document.querySelector(".imgs-container");
-  const elEditor = document.querySelector(".editor");
+  const elEditor = document.querySelector(".editor-layout");
   const elGalleryHeder = document.querySelector(".gallery-header");
 
   elGallery.classList.toggle("hide");

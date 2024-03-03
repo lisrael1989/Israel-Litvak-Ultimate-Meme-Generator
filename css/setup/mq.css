@@ -93,44 +93,37 @@
   .menu-open #menu-icon::before {
     content: "X";
   }
-  .editor {
-    margin-top: 100px;
+  .editor-layout {
+    margin: 100px 20px;
   }
 }
 
 @media (max-width: 600px) {
-  .editor-layout {
-    display: grid;
-    margin: 0 auto;
-    justify-content: center;
-    padding: 5px;
-    background-color: transparent;
-    border-radius: 20px;
-    grid-template-columns: repeat(auto-fit, minmax(1fr, 100px, 1fr));
-  }
   .toggle-menu-btn {
     right: 30px;
     top: 45px;
     display: block;
     position: fixed;
   }
+
   .main-header {
     top: 25px;
-    margin-bottom: 25px;
   }
 
   .gallery-header {
     margin-top: 120px;
   }
+
   .controls {
     background-color: transparent;
-    max-height: 150px;
+    margin-right: 20px;
   }
 
   .main-nav {
     margin-top: 30px;
   }
-  .editor {
-    margin-top: 130px;
+
+  #editor {
+    margin: 150px 20px;
   }
 }
