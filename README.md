@@ -4,7 +4,7 @@ Welcome to the Ultimate Meme Generator! Create and customize your memes using a 
 
 ## Live Demo
 
-Try the meme generator live here: [Ultimate Meme Generator](https://lisrael1989.github.io/Israel-Litvak-Ultimate-Meme-Generator/)
+Try the meme generator live here: [Ultimate Meme Generator](https://lisrael1989.github.io/Ultimate-Meme-Generator/)
 
 ## Features
 
